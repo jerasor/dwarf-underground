@@ -5,7 +5,7 @@ class Comments extends Component {
     render() {
 
         const inputText = this.props.display ? (
-            <input id='commentInput' type='text' />
+            <input className='comment' id='commentInput' type='text' />
         ) : (
             <div></div>
         );
@@ -14,7 +14,7 @@ class Comments extends Component {
 		    <div>
                 {inputText}
                 <ul>
-                    {this.props.comments.map(comment => <li>{comment}</li>)}
+                    {this.props.comments.map(comment => <li className='comment'>{comment}</li>)}
                 </ul>
             </div>
         )
