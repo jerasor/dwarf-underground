@@ -5,7 +5,7 @@ class Comments extends Component {
     render() {
 
         const inputText = this.props.display ? (
-            <input className='comment' id='commentInput' type='text' />
+            <input autoFocus onKeyPress={this.props.onkey} className='comment' id='commentInput' type='text' />
         ) : (
             <div></div>
         );

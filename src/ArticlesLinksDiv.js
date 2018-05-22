@@ -31,6 +31,13 @@ class ArticlesLinksDiv extends Component {
             commentText: commentText,
             comments: comments,
         })
+        
+    }
+
+    saveOnEnter(ev) {
+        if (ev.key === 'Enter') {
+          this.displayComment()
+        }
     }
 
     render() {
@@ -45,7 +52,7 @@ class ArticlesLinksDiv extends Component {
                     <i className="fa fa-share"></i>
                     <span className="article-link-text">Share Post</span>
                 </a>
-                <Comments display={this.state.displayComment} comments={this.state.comments} />
+                <Comments onkey={this.saveOnEnter.bind(this)} display={this.state.displayComment} comments={this.state.comments} />
             </div>
         )
     }
