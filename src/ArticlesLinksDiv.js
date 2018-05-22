@@ -9,29 +9,33 @@ class ArticlesLinksDiv extends Component {
         this.state = {
             displayComment: false,
             commentText: 'Add Comment',
+            comments: [],
         }
     }
 
     displayComment(){
         let displayComment = this.state.displayComment
         let commentText = this.state.commentText
+        let comments = [...this.state.comments]
 
         if (commentText === 'Add Comment'){
             commentText = 'Submit Comment'
         }
         else {
             commentText = 'Add Comment'
+            comments.push(document.querySelector('#commentInput').value)
         }
 
         this.setState({
             displayComment: !(displayComment),
             commentText: commentText,
+            comments: comments,
         })
     }
 
     render() {
         return(
-	<div className="article-links">
+	        <div className="article-links">
                 <a className="article-link" onClick={() => this.displayComment()}>
                     <i className="fa fa-comments-o"></i>
                     <span className="article-link-text">{this.state.commentText}</span>
@@ -41,8 +45,8 @@ class ArticlesLinksDiv extends Component {
                     <i className="fa fa-share"></i>
                     <span className="article-link-text">Share Post</span>
                 </a>
-                <Comments display={this.state.displayComment} />
-                </div>
+                <Comments display={this.state.displayComment} comments={this.state.comments} />
+            </div>
         )
     }
 }
